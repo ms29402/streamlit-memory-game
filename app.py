@@ -1,4 +1,32 @@
 import streamlit as st
+import random
+import time
+
+st.title("🧠 Memory Game")
+
+# Initialize game state
+if "sequence" not in st.session_state:
+    st.session_state.sequence = []
+
+if "player_input" not in st.session_state:
+    st.session_state.player_input = []
+
+if "level" not in st.session_state:
+    st.session_state.level = 0
+
+if "message" not in st.session_state:
+    st.session_state.message = "Click 'Start Game' to begin!"
+
+if st.button("Start Game"):
+    st.session_state.sequence = [random.choice(["Red","Green","Blue","Yellow"])]
+    st.session_state.player_input = []
+    st.session_state.level = 1
+    st.session_state.message = f"Level {st.session_state.level}: Watch the sequence!"
+
+st.write("Sequence:", st.session_state.sequence)
+st.write(st.session_state.message)
+
+import streamlit as st
 
 st.set_page_config(page_title="Memory Game", layout="centered")
 
